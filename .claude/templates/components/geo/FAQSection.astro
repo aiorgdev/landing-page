@@ -1,0 +1,201 @@
+---
+/**
+ * FAQSection - GEO-optimized FAQ with JSON-LD schema
+ *
+ * Creates an FAQ accordion with proper schema.org markup that helps
+ * AI systems understand and cite the Q&A content. The structured data
+ * improves visibility in both traditional search and AI responses.
+ *
+ * STANDALONE VERSION - No external dependencies required.
+ * Works with or without Tailwind CSS. Generates JSON-LD inline.
+ *
+ * Usage in MDX:
+ * <FAQSection questions={[
+ *   { question: "What is X?", answer: "X is..." },
+ *   { question: "How does Y work?", answer: "Y works by..." }
+ * ]} />
+ */
+
+interface FAQItem {
+  question: string
+  answer: string
+}
+
+interface Props {
+  questions: FAQItem[]
+  class?: string
+}
+
+const { questions, class: className = '' } = Astro.props
+
+// Generate FAQ schema inline (no external dependency)
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: questions.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+}
+---
+
+<section
+  class:list={['geo-faq-section', 'not-prose my-8', className]}
+  aria-labelledby="faq-heading"
+>
+  <!-- JSON-LD Schema for SEO and AI -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <h3
+    id="faq-heading"
+    class="geo-heading mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100"
+  >
+    Frequently Asked Questions
+  </h3>
+
+  <div class="geo-faq-list divide-y divide-gray-200 rounded-lg border border-gray-200 dark:divide-gray-700 dark:border-gray-700">
+    {questions.map((item, index) => (
+      <details class="geo-faq-item group">
+        <summary class="geo-summary flex cursor-pointer list-none items-center justify-between gap-4 p-4 text-left text-base font-medium text-gray-900 transition-colors hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-800/50 [&::-webkit-details-marker]:hidden">
+          <span>{item.question}</span>
+          <svg
+            class="geo-chevron h-4 w-4 shrink-0 text-gray-500 transition-transform duration-200 group-open:rotate-180 dark:text-gray-400"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <div class="geo-answer overflow-hidden">
+          <div class="px-4 pb-4 pt-0 text-gray-600 dark:text-gray-400">
+            {item.answer}
+          </div>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* Smooth open/close animation */
+  details[open] > .geo-answer {
+    animation: accordion-down 0.2s ease-out;
+  }
+
+  @keyframes accordion-down {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Fallback styles for projects without Tailwind */
+  .geo-faq-section {
+    margin: 2rem 0;
+  }
+
+  .geo-heading {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .geo-faq-list {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .geo-faq-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .geo-faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .geo-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111827;
+    cursor: pointer;
+    list-style: none;
+    text-align: left;
+    transition: background-color 0.15s;
+  }
+
+  .geo-summary:hover {
+    background-color: #f9fafb;
+  }
+
+  .geo-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .geo-chevron {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    color: #6b7280;
+    transition: transform 0.2s;
+  }
+
+  details[open] .geo-chevron {
+    transform: rotate(180deg);
+  }
+
+  .geo-answer > div {
+    padding: 0 1rem 1rem 1rem;
+    color: #4b5563;
+  }
+
+  /* Dark mode fallback */
+  @media (prefers-color-scheme: dark) {
+    .geo-heading {
+      color: #f3f4f6;
+    }
+
+    .geo-faq-list {
+      border-color: #374151;
+    }
+
+    .geo-faq-item {
+      border-color: #374151;
+    }
+
+    .geo-summary {
+      color: #f3f4f6;
+    }
+
+    .geo-summary:hover {
+      background-color: rgba(31, 41, 55, 0.5);
+    }
+
+    .geo-chevron {
+      color: #9ca3af;
+    }
+
+    .geo-answer > div {
+      color: #9ca3af;
+    }
+  }
+</style>

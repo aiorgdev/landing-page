@@ -1,0 +1,34 @@
+# This kit doesn't have its own dependencies
+# But when installed in a project, these should be ignored:
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Astro
+dist/
+.astro/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build artifacts
+.turbo/
+.vercel/
+.wrangler/
+*.tsbuildinfo

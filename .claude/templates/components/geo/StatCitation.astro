@@ -1,0 +1,151 @@
+---
+/**
+ * StatCitation - GEO-optimized component for statistics
+ *
+ * Presents statistics with clear attribution, which AI systems prefer
+ * for credibility. The structured format helps AI understand and cite
+ * the data accurately.
+ *
+ * STANDALONE VERSION - No external dependencies required.
+ * Works with or without Tailwind CSS.
+ *
+ * Usage in MDX:
+ * <StatCitation
+ *   stat="42% of startups fail because there's no market need"
+ *   source="CB Insights"
+ *   year="2024"
+ *   url="https://cbinsights.com/research/startup-failure-reasons/"
+ * />
+ */
+
+interface Props {
+  stat: string
+  source: string
+  year?: string
+  url?: string
+  class?: string
+}
+
+const { stat, source, year, url, class: className = '' } = Astro.props
+---
+
+<figure
+  class:list={[
+    'geo-stat-citation',
+    'not-prose my-6 rounded-lg border border-gray-200 bg-gray-50 p-4',
+    'dark:border-gray-700 dark:bg-gray-800/50',
+    className
+  ]}
+  role="figure"
+  aria-label={`Statistic from ${source}`}
+>
+  <div class="flex gap-3">
+    <svg
+      class="geo-icon h-5 w-5 flex-shrink-0 text-green-600 dark:text-green-400"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m22 7-8.5 8.5-5-5L2 17" />
+      <path d="M16 7h6v6" />
+    </svg>
+    <div>
+      <p class="geo-stat m-0 text-base font-semibold text-gray-900 dark:text-gray-100">
+        {stat}
+      </p>
+      <figcaption class="geo-source mt-2 text-sm text-gray-600 dark:text-gray-400">
+        Source:{' '}
+        {url ? (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            {source}
+          </a>
+        ) : (
+          <span>{source}</span>
+        )}
+        {year && <span> ({year})</span>}
+      </figcaption>
+    </div>
+  </div>
+</figure>
+
+<style>
+  /* Fallback styles for projects without Tailwind */
+  .geo-stat-citation {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+  }
+
+  .geo-stat-citation .flex {
+    display: flex;
+  }
+
+  .geo-stat-citation .gap-3 {
+    gap: 0.75rem;
+  }
+
+  .geo-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    color: #16a34a;
+  }
+
+  .geo-stat {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .geo-source {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+
+  .geo-source a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .geo-source a:hover {
+    color: #111827;
+  }
+
+  /* Dark mode fallback */
+  @media (prefers-color-scheme: dark) {
+    .geo-stat-citation {
+      border-color: #374151;
+      background-color: rgba(31, 41, 55, 0.5);
+    }
+
+    .geo-icon {
+      color: #4ade80;
+    }
+
+    .geo-stat {
+      color: #f3f4f6;
+    }
+
+    .geo-source {
+      color: #9ca3af;
+    }
+
+    .geo-source a:hover {
+      color: #f3f4f6;
+    }
+  }
+</style>

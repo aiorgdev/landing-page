@@ -1,0 +1,102 @@
+---
+/**
+ * KeyTakeaway - GEO-optimized component for quotable insights
+ *
+ * Highlights important insights in a visually distinct way that AI systems
+ * recognize as worth citing. Use for key points you want AI to surface.
+ *
+ * STANDALONE VERSION - No external dependencies required.
+ * Works with or without Tailwind CSS.
+ *
+ * Usage in MDX:
+ * <KeyTakeaway>
+ *   Your headline should communicate your unique value in under 10 words.
+ * </KeyTakeaway>
+ */
+
+interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props
+---
+
+<aside
+  class:list={[
+    'geo-key-takeaway',
+    'not-prose my-6 rounded-md border-l-4 border-amber-500 bg-amber-50 py-4 pl-6 pr-4',
+    'dark:bg-amber-950/30',
+    className
+  ]}
+  role="note"
+  aria-label="Key takeaway"
+>
+  <div class="flex gap-3">
+    <svg
+      class="geo-icon h-5 w-5 flex-shrink-0 text-amber-600 dark:text-amber-400"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m12 3-1.9 5.3L5 10l5.1 1.7L12 17l1.9-5.3L19 10l-5.1-1.7L12 3Z" />
+      <path d="M5 3v4M3 5h4M6 17v4M4 19h4M17 17v4M19 19h4" />
+    </svg>
+    <div class="geo-content m-0 text-sm font-medium leading-relaxed text-amber-900 dark:text-amber-100">
+      <slot />
+    </div>
+  </div>
+</aside>
+
+<style>
+  /* Fallback styles for projects without Tailwind */
+  .geo-key-takeaway {
+    margin: 1.5rem 0;
+    padding: 1rem 1rem 1rem 1.5rem;
+    border-radius: 0.375rem;
+    border-left: 4px solid #f59e0b;
+    background-color: #fffbeb;
+  }
+
+  .geo-key-takeaway .flex {
+    display: flex;
+  }
+
+  .geo-key-takeaway .gap-3 {
+    gap: 0.75rem;
+  }
+
+  .geo-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    color: #d97706;
+  }
+
+  .geo-content {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.625;
+    color: #78350f;
+  }
+
+  /* Dark mode fallback */
+  @media (prefers-color-scheme: dark) {
+    .geo-key-takeaway {
+      background-color: rgba(120, 53, 15, 0.3);
+    }
+
+    .geo-icon {
+      color: #fbbf24;
+    }
+
+    .geo-content {
+      color: #fef3c7;
+    }
+  }
+</style>

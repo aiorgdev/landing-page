@@ -1,0 +1,291 @@
+{
+  "version": "3.0.3",
+  "releasedAt": "2026-02-05",
+  "packageName": "landing-page",
+  "packageDisplayName": "Landing Page Kit",
+  "publicRepo": "aiorgdev/landing-page",
+  "minUpgradeFrom": "2.0.0",
+  "type": "enhancement",
+
+  "fileCategories": {
+    "alwaysReplace": [
+      ".claude/commands/**/*.md",
+      ".claude/agents/**/*.md",
+      ".claude/knowledge/**/*.md",
+      ".claude/templates/**/*",
+      ".claude/settings.json",
+      ".claude/version.json",
+      "CLAUDE.md"
+    ],
+    "mergeIfChanged": [],
+    "addOnly": [],
+    "neverTouch": [
+      ".env*",
+      "public/**/*",
+      "src/**/*",
+      "node_modules/**/*",
+      "dist/**/*",
+      ".astro/**/*",
+      "package.json",
+      "package-lock.json",
+      "pnpm-lock.yaml",
+      "yarn.lock",
+      "tsconfig.json",
+      "astro.config.mjs",
+      "astro.config.ts"
+    ]
+  },
+
+  "changelog": {
+    "3.0.3": {
+      "date": "2026-02-05",
+      "highlights": ["Performance Tips for SEO"],
+      "added": [
+        "Core Web Vitals optimization guide in seo-geo-masterguide.md",
+        "LCP quick fixes table (content-visibility, lazy loading, third-party scripts, fonts, images)",
+        "Astro-specific performance tips (output mode, compressHTML)"
+      ],
+      "changed": [
+        "Part 6: Technical SEO Checklist now includes actionable performance guidance"
+      ],
+      "fixed": [],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": "New performance tips in seo-geo-masterguide.md help you avoid common LCP killers: content-visibility on hero, lazy-loading above fold, sync third-party scripts, unused fonts, oversized images. These directly affect SEO rankings."
+    },
+    "3.0.2": {
+      "date": "2026-02-03",
+      "highlights": ["Simplified /setup - faster, cleaner"],
+      "added": [],
+      "changed": [
+        "Complete rewrite of /setup command - from 600 lines to 160 lines",
+        "Uses Read tool instead of bash grep for reading files",
+        "ONE bash command at a time (no parallel calls that error)",
+        "Removed unnecessary 'Is analysis correct?' confirmation step",
+        "Consolidated directory checks into single bash command"
+      ],
+      "fixed": [
+        "Parallel bash commands causing 'Sibling tool call errored'",
+        "Setup taking 2+ minutes due to excessive commands",
+        "Confusing output with many bash calls running at once"
+      ],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": null
+    },
+    "3.0.1": {
+      "date": "2026-02-03",
+      "highlights": ["Setup UX improvement"],
+      "added": [],
+      "changed": [
+        "Welcome banner in /setup now outputs text directly instead of using bash echo"
+      ],
+      "fixed": [
+        "Welcome message no longer shows raw echo command in Claude Code output"
+      ],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": null
+    },
+    "3.0.0": {
+      "date": "2026-02-02",
+      "highlights": ["Template-Agnostic GEO Enhancement Kit"],
+      "added": [
+        "Intelligent /setup that detects and adapts to ANY Astro project",
+        "Template recommendation (AstroWind) for users without existing project",
+        "Standalone GEO components in .claude/templates/ (no external dependencies)",
+        "Automatic project structure analysis (finds content location, components dir)",
+        "Support for Astro 4.x and 5.x Content Collections",
+        "Fallback CSS in all components (works without Tailwind)",
+        "New knowledge file: astro-patterns.md for structure detection",
+        "New knowledge file: geo-components.md for component usage",
+        "Edge case handling: monorepos, old Astro versions, non-standard structures"
+      ],
+      "changed": [
+        "ARCHITECTURE CHANGE: Kit is now an enhancement layer, not a complete template",
+        "Kit no longer ships pages, layouts, or astro.config",
+        "GEO components moved to .claude/templates/ (copied by /setup)",
+        "/setup now installs chosen template first, then adds GEO components",
+        "Components are standalone (inline schema.ts, fallback CSS)",
+        "Import paths adapt to project structure (~/components, @/components, relative)",
+        "Works with any Astro template (AstroWind, Starlight, custom)"
+      ],
+      "fixed": [
+        "Kit no longer conflicts with existing project files",
+        "Dark mode works across different template systems",
+        "Components work with or without Tailwind CSS"
+      ],
+      "breaking": [
+        "Kit no longer contains complete Astro project",
+        "Must run /setup to install template and integrate GEO",
+        "Old v2.x src/ files are not included",
+        "Users with v2.x projects should NOT upgrade (keep v2.x or start fresh)"
+      ],
+      "newEnvVars": [],
+      "upgradeNotes": "v3.0 is a complete architecture change. The kit is now an enhancement layer that works with ANY Astro project. Existing v2.x users should NOT upgrade - your project structure is different. For new projects: 1) Run /setup, 2) Choose a template (or use existing Astro project), 3) GEO components are added automatically. See CLAUDE.md for details."
+    },
+    "2.0.1": {
+      "date": "2026-02-02",
+      "highlights": ["Production-Ready Polish & Dark Mode Fix"],
+      "added": [
+        "Automatic dark mode support via prefers-color-scheme media query",
+        "Blog index JSON-LD schema (CollectionPage + BreadcrumbList) for better SEO",
+        "Example blog post demonstrating all GEO components (_example-post.mdx)",
+        "XML escaping helper for sitemap URLs",
+        "generateBlogIndexSchema() helper in schema.ts",
+        "Head slot in PageLayout for custom meta tags"
+      ],
+      "changed": [
+        "ShareButtons now supports multiple instances per page (uses class selector instead of ID)",
+        "FreshnessBadge now respects dark mode with Tailwind dark: variants",
+        "Reading time shows minimum '1 min read' instead of '0 min read'",
+        "Image paths automatically normalized with leading slash",
+        "Removed @astrojs/sitemap integration (using custom sitemap.xml.ts for more control)",
+        "Improved TypeScript types with explicit BlogEntry type alias throughout",
+        "ShareButtons copy button more accessible with type='button' and dark mode support"
+      ],
+      "fixed": [
+        "Dark mode CSS variables not applying (added @media prefers-color-scheme query)",
+        "FreshnessBadge using hardcoded colors that ignored dark mode",
+        "Reading time showing '0 min read' when post.body was empty",
+        "Image URLs potentially malformed when path lacked leading slash",
+        "Sitemap URLs vulnerable to XML injection (special characters)",
+        "TypeScript implicit any errors in getCollection callbacks"
+      ],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": "Minor polish release. Dark mode now works automatically based on system preference. No migration needed from v2.0.0."
+    },
+    "2.0.0": {
+      "date": "2026-02-02",
+      "highlights": ["Complete Astro 5.17 Migration - Zero JS by Default"],
+      "added": [
+        "Astro 5.17+ with Content Layer API - ships zero JavaScript by default",
+        "Cloudflare Pages deployment (primary) - Cloudflare acquired Astro in Jan 2026",
+        "Content Layer API with glob() loader for type-safe blog content",
+        "Native HTML details/summary for FAQ accordion (zero JS)",
+        "CSS-only mobile menu navigation (zero JS)",
+        "Client-side scroll spy for Table of Contents (optional enhancement)",
+        "Copy link button with fallback for older browsers",
+        "Why Astro knowledge file explaining framework choice",
+        "Improved GEO components with inline SVG icons (no icon library)",
+        "Enhanced SEO meta tags (article:published_time, theme-color, etc.)",
+        "Schema.org microdata on blog posts for better SEO"
+      ],
+      "changed": [
+        "COMPLETE REWRITE: Next.js → Astro",
+        "All React components converted to .astro format",
+        "Blog system now uses Astro 5 Content Layer API (glob loader)",
+        "Content config moved to src/content.config.ts (Astro 5 standard)",
+        "render() function now imported from astro:content",
+        "Collection entries use post.id instead of post.slug",
+        "Deploy command now defaults to Cloudflare Pages",
+        "Development server now runs on port 4321 (Astro default)",
+        "Section components simplified - no React hooks or state",
+        "Button component simplified - pure CSS with href prop for links",
+        "All icons now inline SVG - removed lucide-react dependency"
+      ],
+      "fixed": [],
+      "breaking": [
+        "FRAMEWORK CHANGE: Next.js → Astro (not an in-place upgrade)",
+        "File structure changed completely",
+        "No more React components - all .astro files",
+        "Blog posts now in src/content/blog/ with Astro schema",
+        "Content config at src/content.config.ts (not src/content/config.ts)"
+      ],
+      "newEnvVars": [],
+      "upgradeNotes": "v2.0 is a complete rewrite using Astro 5.17. This is NOT an in-place upgrade from v1.x. To migrate: 1) Create new project with v2.0, 2) Copy blog posts from src/content/blog/*.mdx (MDX format is compatible), 3) Update frontmatter to match new schema. If you need Next.js features (auth, database, payments), use SaaS Dev Team instead."
+    },
+    "1.2.0": {
+      "date": "2026-02-01",
+      "highlights": ["Blog System Bug Fixes"],
+      "added": [
+        "Navbar component - reusable navigation extracted from Hero",
+        "Barrel export file for sections (src/components/sections/index.ts)",
+        "Auto-generated heading IDs for Table of Contents support",
+        "Prose overrides for better text readability in blog posts"
+      ],
+      "changed": [
+        "GEO components now use explicit Tailwind colors instead of CSS variables for reliability",
+        "All GEO components have `not-prose` class to prevent style inheritance issues",
+        "AnswerBox and KeyTakeaway use `<div>` instead of `<p>` to prevent hydration errors",
+        "FreshnessBadge uses inline styles for cross-theme compatibility",
+        "Blog pages now include Navbar for consistent navigation",
+        "Hero component refactored to use shared Navbar",
+        "Removed `--turbo` from dev script (Turbopack has issues with MDX)"
+      ],
+      "fixed": [
+        "MDX frontmatter parsing - added remark-frontmatter dependency",
+        "Prose styling - added @tailwindcss/typography plugin",
+        "GEO component colors not rendering in Tailwind v4",
+        "Hydration errors from nested `<p>` tags in GEO components",
+        "Table of Contents showing empty items for headings without IDs",
+        "Blog pages missing navigation (couldn't return to main site)",
+        "Direct Answer section using CSS variables that didn't work"
+      ],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": "Run `pnpm install` after upgrade to install new dependencies (remark-frontmatter, @tailwindcss/typography). If you customized Hero component, note that navigation is now in separate Navbar component."
+    },
+    "1.1.0": {
+      "date": "2026-02-01",
+      "highlights": ["World-Class SEO & GEO Blog System"],
+      "added": [
+        "File-based MDX blog system with static generation",
+        "GEO components optimized for AI citations (ChatGPT, Perplexity, Claude, Google AI Overviews)",
+        "AnswerBox - direct answer component (40-60 words) for top of articles",
+        "KeyTakeaway - highlighted insight boxes throughout content",
+        "StatCitation - statistics with source attribution (1 per 175 words recommended)",
+        "FAQSection - FAQ accordion with automatic JSON-LD schema",
+        "FreshnessBadge - content recency indicator",
+        "Blog components: BlogCard, BlogList, BlogHeader, TableOfContents, AuthorCard, ShareButtons, RelatedPosts",
+        "Enhanced schema.ts with Author/Person schema for E-E-A-T",
+        "Auto-generated sitemap.xml with blog posts",
+        "RSS feed at /feed.xml",
+        "robots.txt with AI crawler rules (GPTBot, PerplexityBot, ClaudeBot)",
+        "JSON-LD schemas: BlogPosting with @id linking, BreadcrumbList, FAQPage",
+        "/blog command for creating SEO/GEO-optimized posts",
+        "SEO & GEO Master Guide with research from 15+ authoritative sources",
+        "Platform-specific optimization tips (ChatGPT, Perplexity, Claude, Google AI Overviews)",
+        "Content quality analyzer with suggested statistics density"
+      ],
+      "changed": [
+        "Footer now links to /blog",
+        "Updated CLAUDE.md with comprehensive blog system documentation"
+      ],
+      "fixed": [],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": "Blog posts go in src/content/blog/*.mdx. Use GEO components for AI citations. Images should use Unsplash and be placed in public/blog/. See .claude/knowledge/seo-geo-masterguide.md for research-backed best practices."
+    },
+    "1.0.3": {
+      "date": "2026-01-26",
+      "highlights": ["CI fix"],
+      "added": [],
+      "changed": [],
+      "fixed": ["Fixed lockfile for CI release workflow"],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": null
+    },
+    "1.0.0": {
+      "date": "2026-01-23",
+      "highlights": ["Initial release"],
+      "added": [
+        "Next.js 15 with App Router",
+        "Tailwind CSS v4 + shadcn/ui components",
+        "7 landing page sections: hero, features, testimonials, pricing, FAQ, CTA, footer",
+        "6 commands: /setup, /landing-page, /section, /optimize, /deploy, /analytics",
+        "2 agents: Landing Page Designer, Landing Page Copywriter",
+        "Knowledge files: landing page patterns, conversion checklist, SEO basics, free resources",
+        "Mobile-responsive design",
+        "SEO-ready with Open Graph and Twitter Card support"
+      ],
+      "changed": [],
+      "fixed": [],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": null
+    }
+  }
+}

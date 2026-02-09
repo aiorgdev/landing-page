@@ -111,7 +111,7 @@ Landing pages are content, not apps. They don't need a JavaScript runtime.
 
 Cloudflare acquired Astro in January 2026. Astro is backed by the company that runs 20% of the internet.
 
-**Need auth, database, payments?** Use [SaaS Dev Team](https://aiorg.dev/kits/saas-dev-team) instead.
+**Need auth, database, payments?** Use [SaaS Dev Team](https://aiorg.dev/kits/saas-starter) instead.
 
 ## Project Structure After `/setup`
 
@@ -165,7 +165,7 @@ your-project/
 | Kit | When to use |
 |-----|------------|
 | [Idea OS](https://aiorg.dev/kits/idea-os) | Validate your idea before building |
-| [SaaS Dev Team](https://aiorg.dev/kits/saas-dev-team) | Full-stack SaaS with auth, DB, payments |
+| [SaaS Dev Team](https://aiorg.dev/kits/saas-starter) | Full-stack SaaS with auth, DB, payments |
 | [Marketing OS](https://aiorg.dev/kits/marketing-os) | Automate content marketing and SEO |
 
 ## Links

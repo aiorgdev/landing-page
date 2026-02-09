@@ -93,7 +93,7 @@ Landing pages are content, not apps. They don't need React's 70KB runtime.
 
 Cloudflare acquired Astro in January 2026. It's backed by the company that runs 20% of the internet.
 
-**Need auth, database, payments?** Use [SaaS Dev Team](https://aiorg.dev/kits/saas-dev-team) instead.
+**Need auth, database, payments?** Use [SaaS Dev Team](https://aiorg.dev/kits/saas-starter) instead.
 
 ## Using GEO Components
 

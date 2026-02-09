@@ -171,7 +171,7 @@ your-project/
 ## Links
 
 - **Documentation:** https://aiorg.dev/docs/kits/landing-page
-- **All kits:** https://aiorg.dev/kits
+- **All kits:** https://aiorg.dev/#kits
 - **Issues:** https://github.com/aiorgdev/landing-page/issues
 
 ## License

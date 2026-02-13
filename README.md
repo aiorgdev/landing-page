@@ -1,6 +1,6 @@
 # Landing Page Kit
 
-[![Version](https://img.shields.io/badge/version-3.0.3-blue)](https://github.com/aiorgdev/landing-page/releases)
+[![Version](https://img.shields.io/badge/version-3.1.0-blue)](https://github.com/aiorgdev/landing-page/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Free](https://img.shields.io/badge/price-free-brightgreen)](https://aiorg.dev/kits/landing-page)
 [![Claude Code](https://img.shields.io/badge/built%20for-Claude%20Code-blueviolet)](https://docs.anthropic.com/en/docs/claude-code)
@@ -171,7 +171,7 @@ your-project/
 ## Links
 
 - **Documentation:** https://aiorg.dev/docs/kits/landing-page
-- **All kits:** https://aiorg.dev/#kits
+- **All kits:** https://aiorg.dev/kits
 - **Issues:** https://github.com/aiorgdev/landing-page/issues
 
 ## License

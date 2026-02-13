@@ -57,6 +57,7 @@ Functions for structured data:
 |---------|-------------|
 | `/setup` | **Start here.** Detects environment, installs template if needed, adds GEO components |
 | `/blog` | Create a new GEO-optimized blog post |
+| `/consent` | Set up GDPR cookie consent for tracking scripts (Google Ads, Meta Pixel, GA4) |
 | `/deploy` | Deploy to Cloudflare Pages or Vercel |
 
 ## How /setup Works

@@ -30,6 +30,24 @@ ls src/layouts/Base.astro 2>/dev/null && echo "LAYOUT: src/layouts/Base.astro"
 
 ---
 
+## COOKIE CONSENT
+
+Some analytics tools set cookies and require GDPR consent. Others don't.
+
+**No cookie consent needed:**
+- Cloudflare Web Analytics (recommended)
+- Vercel Analytics
+- Plausible Analytics
+
+**Cookie consent required:**
+- Google Analytics 4 (GA4)
+- Google Ads conversion tracking
+- Meta Pixel / Facebook Pixel
+
+If you set up cookie-based tracking below, **run `/consent` after** to add a GDPR-compliant cookie banner with Google Consent Mode v2.
+
+---
+
 ## ANALYTICS OPTIONS
 
 "Let's set up analytics for your landing page."
@@ -236,6 +254,8 @@ For paid acquisition (ads), set up conversion tracking:
 </a>
 ```"
 
+**WARNING: Google Ads sets cookies. Run `/consent` to add GDPR cookie consent with Google Consent Mode v2.**
+
 ### Facebook Pixel
 
 "For Facebook/Meta ads:
@@ -258,6 +278,8 @@ For paid acquisition (ads), set up conversion tracking:
   fbq('track', 'PageView');
 </script>
 ```"
+
+**WARNING: Meta Pixel sets cookies. Run `/consent` to add GDPR cookie consent.**
 
 ---
 
@@ -315,6 +337,10 @@ MY RECOMMENDATION:
 Start with Cloudflare Web Analytics (free, simple, privacy-friendly).
 Add custom events for CTA tracking using data attributes.
 Switch to Plausible or GA4 if you need detailed funnels.
+
+NOTE: GA4, Google Ads, and Meta Pixel require a cookie consent
+banner. Run /consent after setup. Cloudflare, Vercel, and
+Plausible do NOT need one.
 ```
 
 ---

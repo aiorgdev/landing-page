@@ -1,6 +1,6 @@
 {
-  "version": "3.0.3",
-  "releasedAt": "2026-02-05",
+  "version": "3.1.0",
+  "releasedAt": "2026-02-13",
   "packageName": "landing-page",
   "packageDisplayName": "Landing Page Kit",
   "publicRepo": "aiorgdev/landing-page",
@@ -37,6 +37,23 @@
   },
 
   "changelog": {
+    "3.1.0": {
+      "date": "2026-02-13",
+      "highlights": ["Cookie Consent"],
+      "added": [
+        "/consent command — GDPR cookie consent setup with vanilla-cookieconsent v3",
+        "cookieconsent-config.ts template with Google Consent Mode v2 integration",
+        "Auto-clear cookies on rejection (_ga*, _gc*, _gid*)"
+      ],
+      "changed": [
+        "/analytics command now warns about cookie consent for Google Ads, Meta Pixel, GA4",
+        "/analytics comparison includes cookie consent notes"
+      ],
+      "fixed": [],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": "New /consent command adds GDPR-compliant cookie consent for sites using Google Ads, Meta Pixel, or GA4. If you only use Cloudflare/Vercel/Plausible analytics, no cookie banner is needed."
+    },
     "3.0.3": {
       "date": "2026-02-05",
       "highlights": ["Performance Tips for SEO"],

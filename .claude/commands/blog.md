@@ -206,6 +206,14 @@ npm run build 2>&1 | tail -20
 - Check import paths are correct
 - Check component syntax
 
+### Step 8: Internal Linking Reminder
+
+After creating a post, tell the user:
+
+"**SEO tip:** Make sure your homepage links directly to this post (not just to /blog). Google treats pages found only through sitemap as less important. A 'Latest Posts' section on your homepage with 3-4 recent posts is the single most impactful SEO fix for new sites.
+
+Run `/optimize seo` to check your internal linking."
+
 ---
 
 ## Platform-Specific Tips

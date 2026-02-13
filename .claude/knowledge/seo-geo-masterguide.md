@@ -289,21 +289,41 @@ Allow: /
 
 ### Internal Linking Strategy
 
+**CRITICAL: Homepage must link directly to blog posts.**
+
+Google treats pages discovered only through sitemap as less important than pages discovered through internal links. If your homepage only links to `/blog` (the index), and individual posts are only reachable via the blog listing or sitemap, Google may:
+- Deprioritize crawling those posts
+- Leave them in "Discovered - currently not indexed" limbo
+- Assign lower PageRank to them
+
+**The fix:** Add a "Latest Posts" or "From Our Blog" section on your homepage that links directly to 3-4 recent blog posts. This is the single most effective internal linking change for a new site with DR 0-10.
+
+**Why it works:**
+- Homepage is the most crawled page on any site
+- Direct links from homepage = "these pages are important, crawl them"
+- Increases crawl priority for new blog posts
+- Passes link equity from your highest-authority page
+- Reduces click depth from 3 (homepage → /blog → post) to 1 (homepage → post)
+
 **Topic Cluster Model:**
 
 ```
-Pillar Page (broad topic, 1,500-3,000 words)
-    ├── Cluster Article 1 (specific subtopic)
-    ├── Cluster Article 2 (specific subtopic)
-    ├── Cluster Article 3 (specific subtopic)
-    └── Cluster Article 4 (specific subtopic)
+Homepage
+    ├── Latest Posts section (3-4 direct links to recent posts)
+    └── /blog (index)
+            ├── Cluster Article 1 (specific subtopic)
+            ├── Cluster Article 2 (specific subtopic)
+            ├── Cluster Article 3 (specific subtopic)
+            └── Cluster Article 4 (specific subtopic)
 ```
 
 **Best Practices:**
+- Homepage links directly to 3-4 most recent/important blog posts
 - Every cluster page links back to pillar with keyword-rich anchor text
 - 10-20 internal links per pillar page is optimal
 - Limit click depth to 3 or fewer from homepage
 - Use descriptive anchor text (not "click here")
+- Update homepage "Latest Posts" when publishing new content
 
 ---
 

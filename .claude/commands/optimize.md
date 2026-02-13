@@ -120,6 +120,51 @@ Check for JSON-LD in layout files or pages (search all `.astro` files):
 ├── FAQ: [✓ Found / ⚠️ Missing - add for FAQ section]
 └── Product/Software: [✓ Found / ⚠️ Missing]"
 
+### Internal Linking (Homepage → Blog Posts)
+
+**This is critical for SEO.** Google treats pages found only through sitemap as less important than pages linked from other pages.
+
+Check if the homepage links directly to individual blog posts:
+
+1. Read the homepage (`src/pages/index.astro` or similar detected `INDEX_FILE`)
+2. Search for links to individual blog posts (e.g., `/blog/some-post`, `/en/blog/some-post`)
+3. A link to `/blog` (the index) does NOT count — it must link to actual posts
+
+```bash
+# Check if blog posts exist
+for dir in src/content/post src/content/blog src/content/posts; do
+  test -d "$dir" && ls "$dir"/*.{md,mdx} 2>/dev/null | head -5
+done
+```
+
+**If blog posts exist but homepage doesn't link to them:**
+
+Report as HIGH PRIORITY:
+
+```
+Internal Linking:
+├── Blog posts found: [X] posts
+├── Homepage → blog post links: ⚠️ NONE FOUND
+└── Status: ⚠️ HIGH PRIORITY
+
+Google discovers your blog posts only through sitemap,
+treating them as less important. Your homepage is the
+most-crawled page — links from it signal "crawl these."
+
+FIX: Add a "Latest Posts" section on your homepage with
+3-4 recent posts (title + description + link).
+This is the single most impactful SEO fix for new sites.
+```
+
+**If homepage links to blog posts:**
+
+```
+Internal Linking:
+├── Blog posts found: [X] posts
+├── Homepage → blog post links: ✓ [X] direct links found
+└── Status: ✓ Good
+```
+
 ---
 
 ## PERFORMANCE CHECK

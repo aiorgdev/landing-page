@@ -1,5 +1,5 @@
 {
-  "version": "3.1.0",
+  "version": "3.1.1",
   "releasedAt": "2026-02-13",
   "packageName": "landing-page",
   "packageDisplayName": "Landing Page Kit",
@@ -37,6 +37,21 @@
   },
 
   "changelog": {
+    "3.1.1": {
+      "date": "2026-02-13",
+      "highlights": ["Internal Linking SEO Check"],
+      "added": [
+        "Internal linking check in /optimize — detects if homepage links to blog posts",
+        "Post-creation SEO reminder in /blog — link new posts from homepage"
+      ],
+      "changed": [
+        "SEO masterguide Internal Linking section expanded with homepage → blog post strategy"
+      ],
+      "fixed": [],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": "Google treats pages discovered only through sitemap as less important. The /optimize command now checks if your homepage links directly to blog posts and flags it as high priority if missing. After creating posts with /blog, you'll get a reminder to add them to your homepage."
+    },
     "3.1.0": {
       "date": "2026-02-13",
       "highlights": ["Cookie Consent"],

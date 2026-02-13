@@ -33,26 +33,59 @@ Read `package.json` using the Read tool. Look for `"astro"` in dependencies.
 
 **If Astro found:** Go to STEP 4
 
-**If no package.json or no Astro:** Go to STEP 3
+**If no package.json at all:** Go to STEP 3A (kit-only directory)
+
+**If package.json exists but no Astro:** Go to STEP 3B (non-Astro project)
 
 ---
 
-## STEP 3: No Astro Project
+## STEP 3A: Kit-Only Directory (no package.json)
+
+The directory only has kit files (.claude/, CLAUDE.md) but no project. The user probably installed the kit in its own folder instead of inside their existing project.
 
 Output:
 
-"I don't see an Astro project here.
+"This folder only has the kit files — there's no project here yet.
 
-I recommend **AstroWind** - popular template with blog, dark mode, SEO."
+**If you have an existing Astro project**, move the kit there:"
+
+```
+cp -r .claude/ ~/path/to/your-project/
+cp CLAUDE.md ~/path/to/your-project/
+cd ~/path/to/your-project
+claude
+/setup
+```
 
 Use AskUserQuestion:
-- Question: "Install AstroWind template?"
-- Header: "Template"
+- Question: "What would you like to do?"
+- Header: "Setup"
 - Options:
-  1. "Yes, install AstroWind (recommended)" - "Full template with blog"
-  2. "No, I'll set up Astro myself" - "Manual setup"
+  1. "I have an existing Astro project" - "I'll move the kit files there (instructions above)"
+  2. "Start fresh with AstroWind (Recommended)" - "Install AstroWind template in this folder"
+  3. "I'll set up Astro myself" - "Manual setup — you handle the Astro installation"
 
-**If yes:**
+**If "I have an existing Astro project":**
+
+Output:
+
+"Copy the kit files to your project and run /setup there:
+
+```bash
+cp -r .claude/ /path/to/your-astro-project/
+cp CLAUDE.md /path/to/your-astro-project/
+cd /path/to/your-astro-project
+claude
+/setup
+```
+
+Replace `/path/to/your-astro-project/` with the actual path.
+
+**Not Astro?** This kit is for Astro projects only. For Next.js, use [SaaS Dev Team](https://aiorg.dev/kits/saas-starter)."
+
+Stop here. Do not proceed with further steps.
+
+**If "Start fresh with AstroWind":**
 
 ```bash
 npm create astro@latest -- --template onwidget/astrowind .
@@ -64,6 +97,42 @@ After install, verify:
 ```bash
 test -f astro.config.mjs && echo "SUCCESS" || echo "FAILED"
 ```
+
+Go to STEP 4.
+
+---
+
+## STEP 3B: Non-Astro Project (has package.json, no Astro)
+
+Output:
+
+"I see a project here, but it's not an Astro project. This kit is designed for Astro.
+
+**Options:**
+- **Keep your framework**: The SEO knowledge in `.claude/knowledge/` still works — read `seo-geo-masterguide.md` for universal SEO/GEO tips
+- **For Next.js apps**: Use [SaaS Dev Team](https://aiorg.dev/kits/saas-starter) instead
+- **Switch to Astro**: Install AstroWind in a new folder for your landing page"
+
+Use AskUserQuestion:
+- Question: "What would you like to do?"
+- Header: "Framework"
+- Options:
+  1. "Install AstroWind here" - "Replace this with an Astro landing page (won't touch your existing code if in separate folder)"
+  2. "Keep my framework" - "Just use the SEO knowledge files"
+
+**If "Keep my framework":**
+
+Output:
+
+"The GEO components and commands are Astro-specific, but the SEO knowledge is universal.
+
+Useful files you can read:
+- `.claude/knowledge/seo-geo-masterguide.md` — Research-backed SEO & GEO guide
+- `.claude/knowledge/seo-basics.md` — Meta tags, structured data, Core Web Vitals
+
+For a full AI-powered marketing toolkit, check out [Marketing OS](https://aiorg.dev/kits/marketing-os)."
+
+Stop here.
 
 ---
 

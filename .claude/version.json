@@ -1,5 +1,5 @@
 {
-  "version": "3.1.1",
+  "version": "3.1.2",
   "releasedAt": "2026-02-13",
   "packageName": "landing-page",
   "packageDisplayName": "Landing Page Kit",
@@ -37,6 +37,23 @@
   },
 
   "changelog": {
+    "3.1.2": {
+      "date": "2026-02-13",
+      "highlights": ["/setup handles existing projects"],
+      "added": [
+        "/setup detects kit-only directory (no project) and explains how to move kit to existing project",
+        "/setup detects non-Astro projects and offers useful alternatives instead of asking to install AstroWind"
+      ],
+      "changed": [
+        "/setup no longer jumps to 'Install AstroWind?' when the kit is in the wrong folder"
+      ],
+      "fixed": [
+        "Users with existing projects no longer get confused by /setup assuming fresh start"
+      ],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": "/setup now handles three scenarios: (1) kit in its own folder → tells you to move it to your project, (2) existing non-Astro project → explains kit is Astro-only, points to alternatives, (3) existing Astro project → works as before."
+    },
     "3.1.1": {
       "date": "2026-02-13",
       "highlights": ["Internal Linking SEO Check"],

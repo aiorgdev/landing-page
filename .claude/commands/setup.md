@@ -98,6 +98,23 @@ After install, verify:
 test -f astro.config.mjs && echo "SUCCESS" || echo "FAILED"
 ```
 
+Then check if AstroWind added GitHub Actions:
+```bash
+test -d .github/workflows && echo "FOUND" || echo "NONE"
+```
+
+**If FOUND**, use AskUserQuestion:
+- Question: "AstroWind includes CI workflows (Node 18/20/22 build matrix + lint). Your deploy platform (Cloudflare, Vercel, etc.) already builds for you, so these just burn GitHub Actions minutes. Remove them?"
+- Header: "CI cleanup"
+- Options:
+  1. "Yes, remove .github/ (Recommended)" - "Deploy platforms build for you already"
+  2. "No, keep them" - "I want GitHub Actions CI"
+
+**If "Yes":**
+```bash
+rm -rf .github
+```
+
 Go to STEP 4.
 
 ---

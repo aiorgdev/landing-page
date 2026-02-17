@@ -1,6 +1,6 @@
 {
-  "version": "3.1.2",
-  "releasedAt": "2026-02-13",
+  "version": "3.1.3",
+  "releasedAt": "2026-02-17",
   "packageName": "landing-page",
   "packageDisplayName": "Landing Page Kit",
   "publicRepo": "aiorgdev/landing-page",
@@ -37,6 +37,18 @@
   },
 
   "changelog": {
+    "3.1.3": {
+      "date": "2026-02-17",
+      "highlights": ["Remove AstroWind CI in /setup"],
+      "added": [
+        "/setup offers to remove AstroWind's GitHub Actions after template install (CI is unnecessary — deploy platforms build for you)"
+      ],
+      "changed": [],
+      "fixed": [],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": null
+    },
     "3.1.2": {
       "date": "2026-02-13",
       "highlights": ["/setup handles existing projects"],

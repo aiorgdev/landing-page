@@ -68,10 +68,12 @@ export const metadata: Metadata = {
 ```
 
 ### OG Image Requirements
-- **Size:** 1200x630 pixels (1.91:1 ratio)
+- **Size:** 1200x630 pixels (1.91:1 ratio) — minimum 1200px wide is also required for Google Discover eligibility
 - **Format:** PNG or JPG
 - **File size:** Under 8MB (ideally under 1MB)
 - **Content:** Logo, product name, tagline, visual
+
+**Google Discover:** Pages with images at least 1200px wide and `max-image-preview:large` robots meta tag are eligible for Google Discover, a high-traffic personalized content feed on mobile. Reference: https://developers.google.com/search/docs/appearance/google-discover
 
 ## Twitter Card
 
@@ -154,6 +156,8 @@ Help search engines understand your content.
   ]
 }
 ```
+
+**Note:** Since August 2023, FAQ rich results in Google Search are limited to well-known government and health websites. FAQPage schema is still valuable for AI systems (GEO) and content structure, but won't generate visible rich results for most sites. Reference: https://developers.google.com/search/blog/2023/08/howto-faq-changes
 
 ## Core Web Vitals
 
@@ -245,3 +249,16 @@ export const metadata: Metadata = {
 - [ ] Mobile-friendly
 - [ ] HTTPS enabled
 - [ ] Core Web Vitals passing
+
+## Google Official References
+
+- **Title links:** https://developers.google.com/search/docs/appearance/title-link
+- **Snippets:** https://developers.google.com/search/docs/appearance/snippet
+- **Article structured data:** https://developers.google.com/search/docs/appearance/structured-data/article
+- **FAQPage structured data:** https://developers.google.com/search/docs/appearance/structured-data/faqpage
+- **Image SEO:** https://developers.google.com/search/docs/appearance/google-images
+- **Robots meta tag:** https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag
+- **Google Discover:** https://developers.google.com/search/docs/appearance/google-discover
+- **Speakable (BETA):** https://developers.google.com/search/docs/appearance/structured-data/speakable
+- **HowTo/FAQ changes (Aug 2023):** https://developers.google.com/search/blog/2023/08/howto-faq-changes
+- **Large images case study:** https://developers.google.com/search/case-studies/overview#images

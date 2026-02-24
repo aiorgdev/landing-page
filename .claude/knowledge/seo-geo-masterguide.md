@@ -128,7 +128,9 @@ Author schema directly improves E-E-A-T by:
 
 ### FAQ Schema
 
-FAQPage schema is particularly effective because it pre-formats content as question-answer pairs that AI systems can easily extract:
+FAQPage schema is particularly effective because it pre-formats content as question-answer pairs that AI systems can easily extract.
+
+**Important (Aug 2023):** FAQ rich results in Google Search are now limited to well-known government and health websites. FAQPage schema is still highly valuable for GEO — AI systems extract Q&A pairs regardless of Google's rich result restrictions. Keep using it for AI citations. Reference: https://developers.google.com/search/blog/2023/08/howto-faq-changes
 
 ```json
 {
@@ -265,6 +267,20 @@ export default defineConfig({
 <!-- Defer third-party scripts -->
 <script defer src="https://analytics.example.com/script.js"></script>
 ```
+
+### Google Discover Eligibility
+
+Google Discover is a personalized content feed on mobile that can drive significant traffic without users searching. Requirements:
+- Images at least **1200px wide** (critical)
+- `max-image-preview:large` robots meta tag
+- High-quality, engaging content
+
+Add to your page metadata:
+```html
+<meta name="robots" content="max-image-preview:large">
+```
+
+Reference: https://developers.google.com/search/docs/appearance/google-discover
 
 ### robots.txt for AI Crawlers
 
@@ -501,6 +517,15 @@ This guide synthesizes research from:
 - [searchengineland.com - AI Citation Research](https://searchengineland.com/how-to-get-cited-by-ai-seo-insights-from-8000-ai-citations-455284)
 - [ahrefs.com - ChatGPT Citation Analysis](https://ahrefs.com/blog/most-cited-domains-in-chatgpt/)
 - [Google Search Central - Article Schema](https://developers.google.com/search/docs/appearance/structured-data/article)
+- [Google Search Central - FAQPage Schema](https://developers.google.com/search/docs/appearance/structured-data/faqpage)
+- [Google Search Central - Title Links](https://developers.google.com/search/docs/appearance/title-link)
+- [Google Search Central - Snippets](https://developers.google.com/search/docs/appearance/snippet)
+- [Google Search Central - Image SEO](https://developers.google.com/search/docs/appearance/google-images)
+- [Google Search Central - Robots Meta Tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag)
+- [Google Search Central - Google Discover](https://developers.google.com/search/docs/appearance/google-discover)
+- [Google Search Central - Speakable (BETA)](https://developers.google.com/search/docs/appearance/structured-data/speakable)
+- [Google Search Blog - HowTo/FAQ Changes Aug 2023](https://developers.google.com/search/blog/2023/08/howto-faq-changes)
+- [Google Search Case Studies - Large Images](https://developers.google.com/search/case-studies/overview#images)
 - [firebrand.marketing - GEO 2026](https://www.firebrand.marketing/2025/12/geo-best-practices-2026/)
 - [rankshift.ai - Perplexity Optimization](https://www.rankshift.ai/blog/how-to-get-cited-as-a-source-in-perplexity-ai/)
 - [brightedge.com - Claude Search Best Practices](https://www.brightedge.com/claude-search)

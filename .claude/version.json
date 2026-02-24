@@ -1,6 +1,6 @@
 {
-  "version": "3.1.3",
-  "releasedAt": "2026-02-17",
+  "version": "3.1.4",
+  "releasedAt": "2026-02-24",
   "packageName": "landing-page",
   "packageDisplayName": "Landing Page Kit",
   "publicRepo": "aiorgdev/landing-page",
@@ -37,6 +37,23 @@
   },
 
   "changelog": {
+    "3.1.4": {
+      "date": "2026-02-24",
+      "highlights": ["Google Official SEO References"],
+      "added": [
+        "Google Official References section at end of seo-basics.md with 10 authoritative Google doc links",
+        "FAQPage rich results limitation note in seo-basics.md (Aug 2023 — gov/health sites only)",
+        "Google Discover eligibility note in seo-basics.md OG Image section (1200px minimum)",
+        "Google Discover section in seo-geo-masterguide.md Technical SEO Checklist (Part 6)",
+        "FAQPage limitation note in seo-geo-masterguide.md FAQ Schema section (Part 3)",
+        "9 new Google documentation links in seo-geo-masterguide.md Sources section"
+      ],
+      "changed": [],
+      "fixed": [],
+      "breaking": [],
+      "newEnvVars": [],
+      "upgradeNotes": "SEO knowledge files now reference Google's official documentation directly. Claude sees authoritative sources inline when working on structured data, meta tags, images, and Discover optimization."
+    },
     "3.1.3": {
       "date": "2026-02-17",
       "highlights": ["Remove AstroWind CI in /setup"],
